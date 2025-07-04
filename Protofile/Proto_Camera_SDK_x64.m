@@ -769,7 +769,7 @@ fcns.thunkname{fcnNum}='int32voidPtrcstringuint8Thunk';fcns.name{fcnNum}='Camera
 % CameraSdkStatus __stdcall CameraImage_SaveAsPng ( void * Image , char const * FileName ); 
 fcns.thunkname{fcnNum}='int32voidPtrcstringThunk';fcns.name{fcnNum}='CameraImage_SaveAsPng'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'cstring'};fcnNum=fcnNum+1;
 % CameraSdkStatus __stdcall CameraImage_SaveAsRaw ( void * Image , char const * FileName , int Format ); 
-fcns.thunkname{fcnNum}='int32voidPtrcstringint32Thunk';fcns.name{fcnNum}='CameraImage_SaveAsRaw'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'cstring', 'int32'};fcnNum=fcnNum+1;
+fcns.thunkname{fcnNum}='int32voidPtrcstringint32Thunk';fcns.name{fcnNum}='CameraImage_SaveAsRaw'; fcns.calltype{fcnNum}='Thunk'; fcns.LHS{fcnNum}='int32'; fcns.RHS{fcnNum}={'voidPtr', 'cstring', 'int32'};%fcnNum=fcnNum+1;
 structs.HWND__.members=struct('unused', 'int32');
 structs.HDC__.members=struct('unused', 'int32');
 structs.HBITMAP__.members=struct('unused', 'int32');

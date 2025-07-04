@@ -15,12 +15,23 @@ if not(libisloaded(SDK))
     % unloadlibrary(SDK);
 end
 disp(warnings)
-libfunctionsview(SDK)
+libfunctions(SDK, '-full')
 
 status = calllib(SDK, 'CameraSdkInit', 0)
 device_count = calllib(SDK, 'CameraEnumerateDeviceEx')
 
-device_info = libstruct('tSdkCameraDevInfo')
-device_info.uInstance = uint32(7)
-
+device_info_2 = libstruct('tSdkCameraDevInfo')
+class(device_info_2.uInstance)
+device_info_2.uInstance = uint32(device_info_2.uInstance)
+clear('device_info')
 structs.tSdkCameraDevInfo.members=struct('acProductSeries', 'int8#32', 'acProductName', 'int8#32', 'acFriendlyName', 'int8#32', 'acLinkName', 'int8#32', 'acDriverVersion', 'int8#32', 'acSensorType', 'int8#32', 'acPortType', 'int8#32', 'acSn', 'int8#32', 'uInstance', 'uint32');
+
+
+f = uint32(9)
+
+
+device_info_3 = libpointer('tSdkCameraDevInfo')
+device_info_4 = device_info_3.Value.uInstance = uint32(4)
+class(device_info_3.Value.uInstance)
+
+device_info_4.uInstance = uint32(4)
