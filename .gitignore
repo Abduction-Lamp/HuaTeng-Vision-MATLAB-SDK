@@ -1,0 +1,30 @@
+# Object files and binaries
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# MATLAB cache and temp files
+*.asv
+*.m~
+*.mdl~
+*.fig~
+*.mex*
+*.log
+*.autosave
+.DS_Store
+
+# Hidden system files
+Thumbs.db
+ehthumbs.db
+
+# Visual Studio Code or other IDEs
+.vscode/
+.idea/
+
+# Build folders
+build/
+dist/
+bin/
