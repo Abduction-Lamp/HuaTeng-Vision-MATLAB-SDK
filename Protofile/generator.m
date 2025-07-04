@@ -1,37 +1,34 @@
 path_dll_x64 = 'C:\Windows\System32\MVCAMSDK_X64.dll';
-path_h_x64 = 'C:\Users\IKI-LAB533\Documents\MATLAB\HuaTeng-Vision-MATLAB-SDK\Headers\Matlab_Camera_SDK_x64.h';
+path_h_x64   = 'C:\Users\IKI-LAB533\Documents\MATLAB\HuaTeng-Vision-MATLAB-SDK\Headers\Matlab_Camera_SDK_x64.h';
 
-SDK = 'HuaTengSDK';
+SDK = 'HuaTengSDK';  % Alias 
 
+% Загружаем библиотеку из h файла и создаем protofile c описанием SDK
+% Выгружаем библиотеку
 if not(libisloaded(SDK))
     [notfound, warnings] = loadlibrary(path_dll_x64, path_h_x64, 'mfilename', 'Proto_Camera_SDK_x64', 'alias', SDK);
+    disp(notfound);
+    disp(warnings);
+    libfunctionsview(SDK);
     unloadlibrary(SDK);
 end
 
-disp(warnings)
-
+% Загружаем библиотеку из protofile
 if not(libisloaded(SDK))
     [notfound, warnings] = loadlibrary(path_dll_x64, @Proto_Camera_SDK_x64, 'alias', SDK);
-    % unloadlibrary(SDK);
+    disp(notfound);
+    disp(warnings);
+    libfunctionsview(SDK);
 end
-disp(warnings)
-libfunctions(SDK, '-full')
 
 status = calllib(SDK, 'CameraSdkInit', 0)
 device_count = calllib(SDK, 'CameraEnumerateDeviceEx')
 
-device_info_2 = libstruct('tSdkCameraDevInfo')
-class(device_info_2.uInstance)
-device_info_2.uInstance = uint32(device_info_2.uInstance)
-clear('device_info')
-structs.tSdkCameraDevInfo.members=struct('acProductSeries', 'int8#32', 'acProductName', 'int8#32', 'acFriendlyName', 'int8#32', 'acLinkName', 'int8#32', 'acDriverVersion', 'int8#32', 'acSensorType', 'int8#32', 'acPortType', 'int8#32', 'acSn', 'int8#32', 'uInstance', 'uint32');
+device_info = libstruct('tSdkCameraDevInfo')
+device_info.uInstance = uint32(1)
+class(device_info.uInstance)
 
-
-f = uint32(9)
-
-
-device_info_3 = libpointer('tSdkCameraDevInfo')
-device_info_4 = device_info_3.Value.uInstance = uint32(4)
-class(device_info_3.Value.uInstance)
-
-device_info_4.uInstance = uint32(4)
+device_ptr = libpointer('tSdkCameraDevInfo')
+values = device_ptr.Value;
+values.uInstance = uint32(1);
+class(values.uInstance);
