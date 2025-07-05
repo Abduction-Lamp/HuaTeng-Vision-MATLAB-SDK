@@ -5,6 +5,8 @@
 *.dll
 *.so
 *.dylib
+*.exp
+*.lib
 
 # MATLAB cache and temp files
 *.asv
